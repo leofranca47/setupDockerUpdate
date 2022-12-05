@@ -1,0 +1,24 @@
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	pop-os.localdomain	pop-os
+
+#apache
+127.0.0.1	customer.test
+127.0.0.1	bff.test
+127.0.0.1	php.test
+127.0.0.1	digitallibrary.test
+127.0.0.1	events.test
+127.0.0.1	historical.test
+127.0.0.1	sebraeweb.test
+127.0.0.1	recursividade.test
+127.0.0.1	produtividade.test
+127.0.0.1	api.test
+127.0.0.1	testephp.test
+10.12.4.78      SQLCORP
+#database
+127.0.0.1	database_local
+
+#devilbox
+127.0.0.1	 my_project.loc
+127.0.0.1	 historico-sebrae.loc
+127.0.0.1	 blog.loc

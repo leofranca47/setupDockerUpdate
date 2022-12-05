@@ -1,0 +1,62 @@
+version: "3.7"
+services: 
+    apache8:
+        build: 
+            args: 
+                user: dockeruser
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 443:443
+        extra_hosts:
+            - "customer.test:127.0.0.1"
+            - "bff.test:127.0.0.1"
+            - "digitallibrary.test:127.0.0.1"
+            - "events.test:127.0.0.1"
+            - "historical.test:127.0.0.1"
+            - "sebraeweb.test:127.0.0.1"
+            - "api.test:127.0.0.1"
+            - "host.docker.internal:host-gateway"
+        ulimits:
+            core:
+                hard: 0
+                soft: 0
+        volumes: 
+            - ./project:/var/www/html
+        networks:
+            - sebraePhp8
+    
+
+    mysql8:
+        image: mysql:5.7
+        restart: unless-stopped
+        environment: 
+            MYSQL_DATABASE: customer
+            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_PASSWORD: 123456
+            MYSQL_USER: eu
+        volumes: 
+            - ./.mysql:/var/lib/mysql
+        ports: 
+            - 3308:3306
+        expose:
+            - 3307
+        command: mysqld --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+                "--max_allowed_packet=67108864"
+        networks:
+            - sebraePhp8
+       #mysql_upgrade -u root -p --force
+
+
+networks: 
+    sebraePhp8:
+        driver: bridge
+
+        
+
+
+
+            
