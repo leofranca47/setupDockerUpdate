@@ -75,21 +75,8 @@ RUN mkdir -p /var/run/apache2/
 
 RUN a2enmod ssl
 
-RUN a2ensite backendssl &&\
-    a2ensite backend &&\
-    a2ensite default-ssl &&\
-    a2ensite newbff &&\
-    a2ensite newbffssl
-
-    # a2ensite customer &&\
-    # a2ensite historical &&\
-    # a2ensite atendimento &&\
-    # a2ensite api &&\
-    # a2ensite digital &&\
-    # a2ensite produtividade &&\
-    # a2ensite events &&\
-    # a2ensite sebraeweb &&\
-    # a2ensite bff
+RUN a2ensite default-ssl &&\
+    a2ensite 000-default
 
 RUN a2enmod rewrite
 
