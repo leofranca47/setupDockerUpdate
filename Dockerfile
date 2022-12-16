@@ -29,11 +29,11 @@ RUN apt -y install iputils-ping
 RUN yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.mode=develop,coverage,debug,profile" >> /usr/local/etc/php/conf.d/xdebug.ini  \
-    && echo "xdebug.discover_client_host=1" >> /usr/local/etc/php/conf.d/xdebug.ini  \
+    && echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/conf.d/xdebug.ini  \
     && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini  \
     && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/xdebug.ini  \
-    && echo "xdebug.client_host=127.0.0.1" >> /usr/local/etc/php/conf.d/xdebug.ini
-#  && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini
+#    && echo "xdebug.client_host=127.0.0.1" >> /usr/local/etc/php/conf.d/xdebug.ini
+  && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 #Instala xdebug
 # RUN pecl install xdebug && docker-php-ext-enable xdebug
